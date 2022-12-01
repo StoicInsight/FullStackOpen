@@ -2,33 +2,26 @@ import React from 'react'
 import { useState } from 'react'
 
 
-
 const App = () => {
-  const [left, setLeft] = useState(0)
-  const [right, setRight] = useState(0)
-  const [allClicks, setClicks] = useState([])
+  const [value, setValue] = useState(10)
 
-  function handleLeftClick() {
-    setClicks(allClicks.concat('L'))
-    setLeft(left + 1)
-  }
-  function handleRightClick() {
-    setClicks(allClicks.concat('R'))
-    setLeft(right + 1)
+  const setToValue = (val) => () => {
+    console.log('This Value is ', value)  
+    setValue(val)
   }
 
   return(
     <div>
-      {left}
-      <button onClick={handleLeftClick}>
-        Left
+      {value}
+      <button onClick={setToValue(value + 1)}>
+        Increase
       </button>
-      <button onClick={handleRightClick}>
-        Right
+      <button onClick={setToValue(0)}>
+        Reset
       </button>
-      <h1>{allClicks.join('')}</h1>
-      {right}
-      
+      <button onClick={setToValue(1000)}>
+        Change to 0 ?
+      </button>
     </div>
   )
 }
