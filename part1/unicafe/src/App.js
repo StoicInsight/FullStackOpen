@@ -4,9 +4,31 @@ import './App.css';
 
 
 const Statistics = ({good, bad, neutral}) => {
+
+  function avarage () {
+    const sum = (good + bad + neutral)
+    return sum 
+  }
+
+  function positive () {
+    const sum = (good + bad + neutral)
+    return sum 
+  }
+
+  if(good && bad && neutral === 0) {
+    return(
+      <>
+        <h1>
+          Must leave a review to see avarage
+        </h1>
+      </>
+    )
+  }
+
   return (
     <>
-
+      <h1>Avarage: {avarage()}</h1>
+      <h1>Positive: {positive()}</h1>
     </>
   )
 }
@@ -35,11 +57,11 @@ const App = () => {
           />
           <Button
           name={'Neutral'}
-          onClick={() => setGood(good + 1)}
+          onClick={() => setNeutral(neutral + 1)}
           />
           <Button
           name={'Bad'}
-          onClick={() => setGood(good + 1)}
+          onClick={() => setBad(bad + 1)}
           />
 
         </div>
