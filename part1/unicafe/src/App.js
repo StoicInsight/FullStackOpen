@@ -15,7 +15,7 @@ const Statistics = ({good, bad, neutral}) => {
     return sum 
   }
 
-  if(good && bad && neutral === 0) {
+  if(good === 0  && bad === 0 && neutral === 0) {
     return(
       <>
         <h1>
@@ -35,9 +35,13 @@ const Statistics = ({good, bad, neutral}) => {
 
 const Button = (props) => {
   return (
-    <button onClick={props.click}>
+    <>
+     <button onClick={props.click}>
       {props.name}
-    </button>
+     </button>
+      {props.value}
+    </>
+  
   )
 }
 
@@ -53,17 +57,20 @@ const App = () => {
         <div class="btn-wrap">
           <Button
           name={'Good'}
-          onClick={() => setGood(good + 1)}
+          value={good}
+          click={() => setGood(good + 1)}
           />
           <Button
           name={'Neutral'}
-          onClick={() => setNeutral(neutral + 1)}
+          value={bad}
+          click={() => setNeutral(neutral + 1)}
           />
           <Button
           name={'Bad'}
-          onClick={() => setBad(bad + 1)}
+          value={neutral}
+          click={() => setBad(bad + 1)}
           />
-
+          <Statistics/>
         </div>
       </div>
     </div>
