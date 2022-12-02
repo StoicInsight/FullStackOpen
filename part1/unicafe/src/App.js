@@ -6,13 +6,19 @@ import './App.css';
 const Statistics = ({good, bad, neutral}) => {
 
   function avarage () {
-    const sum = (good + bad + neutral)
-    return sum 
+    const sum = good + bad + neutral
+    return sum / 3
   }
 
   function positive () {
-    const sum = (good + bad + neutral)
-    return sum 
+    const sum = good + bad + neutral
+    const res = good / sum
+    return res.toFixed(2) * 100
+  }
+
+  function all() {
+    const sum = good + bad + neutral
+    return sum
   }
 
   if(good === 0  && bad === 0 && neutral === 0) {
@@ -27,20 +33,22 @@ const Statistics = ({good, bad, neutral}) => {
 
   return (
     <>
-      <h1>Avarage: {avarage()}</h1>
-      <h1>Positive: {positive()}</h1>
+
+      <h3>All: {all()}</h3>
+      <h3>Avarage: {avarage()}</h3>
+      <h3>Positive: {positive()}%</h3>
     </>
   )
 }
 
 const Button = (props) => {
   return (
-    <>
+    <div className='button'>
      <button onClick={props.click}>
       {props.name}
      </button>
       {props.value}
-    </>
+    </div>
   
   )
 }
@@ -53,25 +61,29 @@ const App = () => {
   return(
     <div class="wrap">
       <div className='container'>
-      
-        <div class="btn-wrap">
-          <Button
-          name={'Good'}
-          value={good}
-          click={() => setGood(good + 1)}
+        <h1>Give FeedBack</h1>
+          <div class="btn-wrap">
+            <Button
+            name={'Good'}
+            value={good}
+            click={() => setGood(good + 1)}
+            />
+            <Button
+            name={'Neutral'}
+            value={neutral}
+            click={() => setNeutral(neutral + 1)}
+            />
+            <Button
+            name={'Bad'}
+            value={bad}
+            click={() => setBad(bad + 1)}
+            />
+          </div>
+          <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
           />
-          <Button
-          name={'Neutral'}
-          value={bad}
-          click={() => setNeutral(neutral + 1)}
-          />
-          <Button
-          name={'Bad'}
-          value={neutral}
-          click={() => setBad(bad + 1)}
-          />
-          <Statistics/>
-        </div>
       </div>
     </div>
   )
