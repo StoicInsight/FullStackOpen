@@ -1,47 +1,21 @@
 import { useState } from 'react'
 import './App.css';
 
-const Good = (props) => {
+
+
+const Statistics = ({good, bad, neutral}) => {
   return (
-    <div className='button'>
-      <button
-      className='good' 
-      onClick={() => props.setGood(props.good + 1)}>
-        Good
-      </button>
-    </div>
+    <>
+
+    </>
   )
 }
 
-const Bad = (props) => {
+const Button = (props) => {
   return (
-    <div className='button'>
-      <button className='bad' onClick={() => props.setBad(props.bad + 1)}>
-        Bad
-      </button>
-    </div>
-  )
-}
-
-const Neutral = (props) => {
-  return (
-    <div className='button'>
-      <button 
-      className='neutral'
-      onClick={() => props.setNeutral(props.neutral + 1)}>
-        Neutral
-      </button>
-    </div>
-  )
-}
-
-const Display = ({good, neutral, bad}) => {
-  return (
-    <div className='display'>
-      Good{good}
-      Neutral{neutral}
-      Bad{bad}
-    </div>
+    <button onClick={props.click}>
+      {props.name}
+    </button>
   )
 }
 
@@ -55,15 +29,20 @@ const App = () => {
       <div className='container'>
       
         <div class="btn-wrap">
-          <Good good= {good} setGood={setGood}/>
-          <Bad bad= {bad} setBad={setBad}/>
-          <Neutral neutral= {neutral} setNeutral={setNeutral}/>
+          <Button
+          name={'Good'}
+          onClick={() => setGood(good + 1)}
+          />
+          <Button
+          name={'Neutral'}
+          onClick={() => setGood(good + 1)}
+          />
+          <Button
+          name={'Bad'}
+          onClick={() => setGood(good + 1)}
+          />
+
         </div>
-        <Display
-        good={good}
-        bad={bad}
-        neutral={neutral}
-        />
       </div>
     </div>
   )
