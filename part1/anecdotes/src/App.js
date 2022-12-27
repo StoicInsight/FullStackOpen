@@ -12,16 +12,18 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
 
-  const [count, setCount] = useState(randomString())
+  const [count, setCount] = useState(
+    anecdotes[Math.floor(Math.random() * anecdotes.length)]
+  )
 
-  function randomString()  {
-    const random = anecdotes[Math.floor(Math.random() * anecdotes.length)]
-    console.log(count.p(random))
-  }
+  // function randomString()  {
+  //   const random = anecdotes[Math.floor(Math.random() * anecdotes.length)]
+  //   console.log(count.p(random))
+  // }
 
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>
+      <button onClick={() => setCount(count)}>
         Click
       </button>
       {count}
